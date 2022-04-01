@@ -26,10 +26,10 @@ function getObjectURL(file) {
 
 function uploadFile() {
     
-    var file = document.getElementById('files').files[0];
+    let file = document.getElementById('files').files[0];
     fileSize = file.size;
-    var xhr = new XMLHttpRequest();
-    var fd = new FormData();
+    let xhr = new XMLHttpRequest();
+    let fd = new FormData();
     fd.append("multipartFile", file);
     xhr.upload.addEventListener("progress", onUploadProgress, false);
     xhr.addEventListener("load", onUploadComplete, false);
@@ -40,14 +40,16 @@ function uploadFile() {
 }
 
     /* This function will call when upload is completed */
-    function onUploadComplete(e, error) {
-        if(error){
+function onUploadComplete(e, error) {
+    if(error){
 
         }
-        else{
-            window.location.href = "upload_1"; 
+    else{
+            getExif();
+
         }
-    }
+
+}
  /* This function will continueously update the progress bar */
  function onUploadProgress(e) {
     if (e.lengthComputable) {
@@ -110,3 +112,32 @@ function fileChange(){
     }
 }
 
+
+function getExif()
+{
+
+	//var xmlhttp;
+	let xmlhttp = new XMLHttpRequest();
+	//if(document.getElementById(original_image).getAttribute("src") = "images/uplaod_image.jpg") { getExif();}
+	
+	xmlhttp.onreadystatechange = function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			let str = xmlhttp.getResponseHeader("meta_data");
+            localStorage.setItem("meta_data", str); 			
+            str = xmlhttp.getResponseHeader("result_image");
+            localStorage.setItem("result_image", str);
+
+			window.location.href = "dosaic"; 
+		}
+		else if(xmlhttp.readyState==3){
+            
+        }
+	}
+
+	xmlhttp.open("POST","exif",true);
+	
+    xmlhttp.send();
+
+}

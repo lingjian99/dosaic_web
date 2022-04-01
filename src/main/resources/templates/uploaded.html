@@ -17,9 +17,9 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <title>Dosaic: start!</title>
-
+    <script type="text/javascript" src = "js/upload.js"></script>  
   </head>
-  <body onload="load()">
+  <body onload>
 
     <nav class="navbar navbar-expand-sm navbar-light bg-warning fixed-top">
       <a class="navbar-brand" href="#">镜中的陌生人</a>
@@ -46,15 +46,20 @@
         </ul>
       </div>
     </nav>
-
-    <div class="upload">
-    
-      <img id="original_image" src = "images/uplaod_image.jpg" alt = "Dosaic failed!" width=360 onclick="showOriginal()"/>
-      <br><br>
-      <textarea name="meta" id="file_meta" rows=15 cols=60></textarea><br>
-      </textarea>
+    <br><br>
+    <div class="container">
+      <script>
+        displayImage();
+      </script>
     </div>
 
+    <!--div class="upload">
+      <img id="original_image" src = "images/uplaod_image.jpg" alt = "Dosaic failed!" width=360 onclick="showOriginal()"/>
+      <br><br>
+      <textarea name="meta" id="file_meta" rows=15 cols=43></textarea><br>
+    </div-->
+
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -72,6 +77,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src = "js/upload.js"></script>  
+    
   </body>
 </html>

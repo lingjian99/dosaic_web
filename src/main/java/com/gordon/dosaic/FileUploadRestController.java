@@ -3,20 +3,16 @@ package com.gordon.dosaic;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Enumeration;
+
 
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.UnknownHostException;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -90,12 +86,17 @@ public class FileUploadRestController {
         try{
             Metadata metadata = ImageMetadataReader.readMetadata(file);
             for (Directory directory : metadata.getDirectories()) {
+                jpegExif.append("<p>--");
+                jpegExif.append(directory.toString());
+                jpegExif.append("---</p>");
+                
                 for (Tag tag : directory.getTags()) {
                    str = tag.toString();
-                   jpegExif.append(str);   
+                   jpegExif.append("<p>");
+                   jpegExif.append(str); 
+                   jpegExif.append("</p>");  
                        
                 }
-                break;
             }
 
         }
@@ -109,42 +110,35 @@ public class FileUploadRestController {
        
      @RequestMapping(value = "exif")
 	public void JpegExif(HttpServletRequest request, HttpServletResponse response)throws IOException {
-        
-        
-        StringBuffer stringBuffer = new StringBuffer();
-        String line = null;
-        try{
-            BufferedReader reader = request.getReader();
-            while((line=reader.readLine())!=null){
-                stringBuffer.append(line);
-
-                break;
-            }
-        }
-        catch(Exception e){
-        
-        }
-
-        String ipAddr = getLocalHostLANAddress().getHostAddress();
-      
-        
+    
+  /*
+        String ipAddr; // = getLocalHostLANAddress().getHostAddress();
         PrintWriter out = response.getWriter();
-
         //ipAddr = "{\"MetaDate\": \"" + getJpegMeta() + "\", \"File\":\"http://" + ipAddr + "/images/" + jpegFile +"\"}";
         ipAddr = "{\"MetaDate\":\"" + getJpegMeta() + "\", \"File\": \"/photo/" + jpegFile + ".jpg\"}";
         out.write(ipAddr);
         out.flush();
-        dosaic(out, getRealPath() + jpegFile);
         out.close();
+    */    
+        dosaic(getRealPath() + jpegFile);
+        response.setHeader("meta_data", getJpegMeta());
+        response.setHeader("result_image", "/photo/" + jpegFile + ".jpg");
+        response.flushBuffer();
+
+           
 
     }
-    void dosaic(PrintWriter out, String file)
+    void dosaic(String file)
     {
         DosaicImage di = new DosaicImage(file);
         di.dosaic();
 
     }
-
+/*
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.UnknownHostException;
+import java.util.Enumeration;
     private static InetAddress getLocalHostLANAddress() throws UnknownHostException {
         try {
             InetAddress candidateAddress = null;
@@ -181,5 +175,5 @@ public class FileUploadRestController {
             throw unknownHostException;
         }
     }
-
+*/
 }

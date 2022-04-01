@@ -13,7 +13,7 @@ public class WelcomePageController {
     public String test_ajax(){
         return "ajax_test";
     }
-    @RequestMapping("/upload_1")
+    @RequestMapping("/dosaic")
     public String upload()
     {
         return "uploaded";

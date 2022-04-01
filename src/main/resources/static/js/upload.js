@@ -41,7 +41,7 @@ function showOriginal()
 
 function displayImage()
 {
-	let str = "<img id=\"original_image\" src = \"" + localStorage.getItem("result_image") + "\" alt = \"images/uplaod_image.jpg\" onclick=\"showOriginal()\"/>" 
+	let str = "<img id=\"original_image\" style=\"height=100%\" src = \"" + localStorage.getItem("result_image") + "\" alt = \"images/uplaod_image.jpg\" hieght=100% onclick=\"showOriginal()\"/>" 
 	str = "<div class=\"row\"> <div class=\"col-sm-12\">" + str + "</div></div><div class=\"row\"><div class=\"col-sm-12\">" + localStorage.getItem("meta_data") + "</div></div>";
     document.write(str);
 }

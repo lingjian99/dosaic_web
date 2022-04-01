@@ -124,9 +124,11 @@ function getExif()
 	{
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
+            localStorage.clear();
 			let str = xmlhttp.getResponseHeader("meta_data");
             localStorage.setItem("meta_data", str); 			
             str = xmlhttp.getResponseHeader("result_image");
+            
             localStorage.setItem("result_image", str);
 
 			window.location.href = "dosaic"; 

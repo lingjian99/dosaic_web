@@ -54,9 +54,7 @@ public class FileUploadRestController {
  
         try {
  
-
             byte[] bytes = uploadfile.getBytes();
-            
             jpegFile = uploadfile.getOriginalFilename();
             
             Path path = Paths.get(getRealPath() + jpegFile);
@@ -67,6 +65,7 @@ public class FileUploadRestController {
         }
     }
     String getRealPath()
+
     {
  
         String b_path = "/home/images/";
@@ -86,9 +85,9 @@ public class FileUploadRestController {
         try{
             Metadata metadata = ImageMetadataReader.readMetadata(file);
             for (Directory directory : metadata.getDirectories()) {
-                jpegExif.append("<p>--");
+                jpegExif.append("<p style=\" color:red;\">------");
                 jpegExif.append(directory.toString());
-                jpegExif.append("---</p>");
+                jpegExif.append("------</p>");
                 
                 for (Tag tag : directory.getTags()) {
                    str = tag.toString();
@@ -101,7 +100,7 @@ public class FileUploadRestController {
 
         }
         catch (Exception e){
-            
+            //
         }
         str=jpegExif.toString();
         return str;    
@@ -109,7 +108,7 @@ public class FileUploadRestController {
 
        
      @RequestMapping(value = "exif")
-	public void JpegExif(HttpServletRequest request, HttpServletResponse response)throws IOException {
+	public void jpegExif(HttpServletRequest request, HttpServletResponse response)throws IOException {
     
   /*
         String ipAddr; // = getLocalHostLANAddress().getHostAddress();
@@ -120,7 +119,7 @@ public class FileUploadRestController {
         out.flush();
         out.close();
     */    
-        dosaic(getRealPath() + jpegFile);
+    //    dosaic(getRealPath() + jpegFile);
         response.setHeader("meta_data", getJpegMeta());
         response.setHeader("result_image", "/photo/" + jpegFile + ".jpg");
         response.flushBuffer();
@@ -131,7 +130,7 @@ public class FileUploadRestController {
     void dosaic(String file)
     {
         DosaicImage di = new DosaicImage(file);
-        di.dosaic();
+        di.dosaic();    
 
     }
 /*

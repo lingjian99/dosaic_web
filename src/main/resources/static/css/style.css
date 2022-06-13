@@ -1,17 +1,11 @@
+body {
+    background-color: #303030;
+    text-align: justify;
+    font-size: 14px;
+  
+    color: #f0f0f0;
+}
+  
 .topnav a:hover {
     border-bottom: 3px solid red;
-}
-div.upload{
-    width: 364px;
-
-    height: 590px;  
-    margin: 0px auto;
-    margin-top: 80px;
-    /*background-color: gray;
-    border-style:solid;
-    border-color: lightgray;
-    
-    box-shadow: 4px 4px 4px lightgray;*/
-    text-align: center;
-
 }

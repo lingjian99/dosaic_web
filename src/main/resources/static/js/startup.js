@@ -103,7 +103,7 @@ function fileChange(){
             fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';   
         }
         let str = getObjectURL(file);
-        document.getElementById("original_image").setAttribute("src", str);
+        document.getElementById("dosaic_image").setAttribute("src", str);
         document.getElementById("do_dosaic").removeAttribute("disabled");
     } 
     else{
@@ -118,7 +118,7 @@ function getExif()
 
 	//var xmlhttp;
 	let xmlhttp = new XMLHttpRequest();
-	//if(document.getElementById(original_image).getAttribute("src") = "images/uplaod_image.jpg") { getExif();}
+	//if(document.getElementById(dosaic_image).getAttribute("src") = "images/uplaod_image.jpg") { getExif();}
 	
 	xmlhttp.onreadystatechange = function()
 	{

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"  />
+    <title>Dosaic</title>
+    
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.css">
+    <script type="text/javascript" src = "js/dosaic.js"></script>  
+
+  </head>
+
+  <body>
+    <script> topBar()</script>
+    <br><br><br><br<br><br>
+    <div class="container">
+
+      <div class="row">   <!-- image -->
+        <div class="col-lg-12" style="text-align:center;">
+          <img src="images/uplaod_image.jpg"  id="dosaic_image" style="max-width: 700px; width: 100%" onclick="animation_effect()">
+        </div>  
+      </div> 
+
+      <div class="row">   <!-- buttons -->
+       
+        <div class="col-lg-12" style="text-align:center;">
+
+          <div class="progress">
+            <div class="progress-bar bg-info" id="progress_bar" style="width:0%; display: none;"></div>
+          </div>      
+          <br>
+          <input type="file" id="files" style="display: none;" onchange="fileChange()">            
+          <button class="btn btn-warning" id="submit_bnt" onclick="chooseFile()">Select a Image File</button>          
+          <button class="btn btn-warning" id="upload" onclick="uploadFile()">Upload</button>
+          <!--button class="btn btn-warning" id="do_dosaic" onclick="do_dosaic()" disabled>Go!</button-->
+          <button class="btn btn-warning" id="do_dosaic" onclick="do_dosaic()">Go!</button>
+          <button class="btn btn-warning" id="help" onclick="startUploading()">Help</button>
+
+        </div>
+      </div>      
+      <div class="row">   <!-- exif -->
+        <div class="col-lg-2"><br></div>
+        <div class="col-lg-8" id="fileInfo">
+          <script>htmlExif()</script>
+        </div>
+      </div>
+    </div>
+    <br><br><br><br><br><br>
+    <nav class="navbar bg-dark fixed-bottom">
+    <div style="width: 100%; margin:auto; word-wrap: break-word; max-width: 720px;">
+      <p style="color:lightgrey ">这是一个程序设计练习，涉及多种技术包括HTML，CSS，JavaScript，Ajax，Java，c/c++，opencv等，时间有限，只能浅尝辄止。代码均在github上面。版权莫有，盗版不究！NonCopyRight© 2020.9
+      <span><a href="https://www.facebook.com/profile.php?id=100073787142000" class="fa-brands fa-facebook"></a>
+      <a href="#" class="fa-brands fa-twitter"></a>
+      <a href="#" class="fa-brands fa-linkedin"></a>
+      <a href="#" class="fa-brands fa-instagram"></a></span>
+    </div>
+    </nav>  
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" ></script>
+    
+  </body>
+</html>

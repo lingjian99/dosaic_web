@@ -12,7 +12,7 @@ public class Dosaic{
         
         
         CLibrary INSTANCE = (CLibrary) Native.load("dosaic", CLibrary.class);
-		void do_dosaic(WString file);
+		void dosaic(WString file);
     }
 
     public void dosaic(String file){
@@ -20,7 +20,7 @@ public class Dosaic{
         //CLibrary.INSTANCE.do_dosaic1();
         //String str = "/images/2.jpg";
         WString ws = new WString(file);
-        CLibrary.INSTANCE.do_dosaic(ws);
+        CLibrary.INSTANCE.dosaic(ws);
     }
 
 }

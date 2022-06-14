@@ -2,8 +2,7 @@
 //the choose file btn is clicked
 function chooseFile(){
 
-    var bar = document.getElementById("progress_bar");
-    bar.style.width="0%";
+    document.getElementById("processor").innerHTML = "0%";
 
     document.getElementById("files").click();          
 }
@@ -34,6 +33,7 @@ function fileChange(){
         strFileInfo += "<br>File Size: " + size;        
         document.getElementById("fileInfo").innerHTML=strFileInfo;
 
+
     } 
     else{
         document.getElementById("do_dosaic").removeAttribute("disabled");
@@ -50,6 +50,7 @@ function startUploading() {
         return;
     }
 
+    document.getElementById("proDiv").style.display="inline-block";
     uploadFile();
 
 }
@@ -79,6 +80,11 @@ function uploadFile() {
     document.getElementById("do_dosaic").removeAttribute("disabled");
         
 }
+function loadImage(){
+    var imgDiv=document.getElementById("imageDiv");
+    var rHeight=document.getElementById("rowHeight");
+    rHeight.style.height = imgDiv.clientHeight.toString()+"px";
+}
 
     /* This function will call when upload is completed */
 function onUploadComplete(e, error) {
@@ -97,8 +103,10 @@ function onUploadComplete(e, error) {
         var percentComplete = parseInt((loaded) * 100 / fileSize);
 
         if(percentComplete <= 100){
-            
-            document.getElementById("progress_bar").style.width = percentComplete.toString()+"%";
+            document.getElementById("progressor").innerHTML = percentComplete.toString()+"%";
+        }
+        else{
+            document.getElementById("proDiv").style.display="none";
         }
     } else {
         alert('unable to compute, error 0101:');

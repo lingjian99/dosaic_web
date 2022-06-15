@@ -64,16 +64,15 @@ public class FileUploadRestController {
             e.printStackTrace();
         }
     }
-    String getRealPath()
-
-    {
+    private static String localImageFile = "/home/images/";
+    String getRealPath(){
  
-        String b_path = "/home/images/";
+        String bpath = localImageFile;
 
-        File dir = new File(b_path);
+        File dir = new File(bpath);
             if(!dir .exists()) dir.mkdirs();
         
-        return b_path;
+        return bpath;
     }
 
     String getJpegMeta()

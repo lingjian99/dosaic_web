@@ -23,11 +23,11 @@
        
         <div class="col-lg-12" style="text-align:center;">
      
-          <input type="file" id="files" style="display: none;" onchange="fileChange()">            
+          <input type="file" id="files" style="display: none;" onchange="fileChanged()">            
           <button class="btn btn-warning" id="submit_bnt" onclick="chooseFile()">Select a Image File</button>          
-          <button class="btn btn-warning" id="upload" onclick="uploadFile()">Upload</button>
-          <!--button class="btn btn-warning" id="do_dosaic" onclick="do_dosaic()" disabled>Go!</button-->
-          <button class="btn btn-warning" id="do_dosaic" onclick="do_dosaic()">Go!</button>
+          <button class="btn btn-warning" id="upload" onclick="uploadFile()" disabled>Upload</button>
+
+          <button class="btn btn-warning" id="go_dosaic" onclick="go_dosaic()" disabled>Go!</button>
           <button class="btn btn-warning" id="help" onclick="startUploading()">Help</button>
           <br><br>
         </div>
@@ -40,7 +40,7 @@
           <div id="proDiv" style="position: inherit; display:none;">
             <br><br><br><br>
             <div class="lds-spinner" style="vertical-align: middle;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <p style="font-size:28px;color: aliceblue;" id="processor">0%</p>
+            <p style="font-size:28px;color: aliceblue;" id="progressor">0%</p>
           </div>
         </div>  
       </div> 

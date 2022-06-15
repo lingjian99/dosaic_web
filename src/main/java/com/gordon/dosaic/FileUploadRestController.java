@@ -120,18 +120,13 @@ public class FileUploadRestController {
     */    
     //    dosaic(getRealPath() + jpegFile);
         response.setHeader("meta_data", getJpegMeta());
-        response.setHeader("result_image", "/photo/" + jpegFile + ".jpg");
+        response.setHeader("result_image", "/photo/" + jpegFile);
         response.flushBuffer();
 
            
 
     }
-    void dosaic(String file)
-    {
-        DosaicImage di = new DosaicImage(file);
-        di.dosaic();    
-
-    }
+}
 /*
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -174,4 +169,3 @@ import java.util.Enumeration;
         }
     }
 */
-}

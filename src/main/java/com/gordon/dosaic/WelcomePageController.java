@@ -10,10 +10,10 @@ public class WelcomePageController {
     public String index(){
         return "dosaic";
     }
- 
-    @RequestMapping("/dosaic")
+  
+    @RequestMapping("/go_dosaic")
     public String upload()
     {
-        return "uploaded";
+        return "go_dosaic";
     }
 }

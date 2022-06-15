@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="">
+<head>
+<title>dosaic-test</title>
+
+<!-- Bootstrap CSS --> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+<script src="js/go_dosaic.js" ></script>
+
+<style>
+    body{ background-color:rgba(25, 24, 23, 0.849); }
+
+       #resizeDiv {
+            width: 100%;
+            height: 100%;
+            /*border: 1px solid rgb(220, 125, 16);*/
+            margin:0%
+
+        }
+</style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 col-sm-12" style="text-align: center;">
+                <canvas id="resizeDiv" width="800" height="1100"></canvas>
+                <canvas id="canvas_hiden" width="100" height="100" style="display:none;"> </canvas>
+            </div>
+        </div>
+        <br>       
+        <div class="row">
+            <button type="button" onclick="closeWindow()">Close</button>
+            <img src="images/1.jpg" id="original_image" style="text-align: center; display: none;"/>
+        </div>
+    </div>
+
+<!--
+    xs (for phones - screens less than 768px wide)
+    sm (for tablets - screens equal to or greater than 768px wide)
+    md (for small laptops - screens equal to or greater than 992px wide)
+    lg (for laptops and desktops - screens equal to or greater than 1200px wide)
+-->
+
+</body>
+</html>

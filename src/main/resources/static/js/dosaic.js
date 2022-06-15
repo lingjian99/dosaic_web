@@ -2,44 +2,39 @@
 //the choose file btn is clicked
 function chooseFile(){
 
-    document.getElementById("processor").innerHTML = "0%";
-
+    document.getElementById("progressor").innerHTML = "0%";
     document.getElementById("files").click();          
 }
 
 //read basic the file information when a file is selected
-function fileChange(){
+function fileChanged(){
 
     let currFile = document.getElementById('files').files[0];
     if (currFile) {    
-
         var size;
-        if (currFile.size > 1024 * 1024){
-            size = (Math.round(currFile.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';   
-            if(size>=2){
-                alert("File size can not great than 2MB");
-                document.getElementById("do_dosaic").removeAttribute("disabled");
-                return;
+        if(currFile.size<2048*1024){
+
+            if (currFile.size > 1024 * 1024){
+                size = (Math.round(currFile.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';   
+        
+            }else {  
+                size = (Math.round(currFile.size * 100 / 1024) / 100).toString() + 'KB';   
             }
+
+            let str = getObjectURL(currFile);
+    
+            document.getElementById("dosaic_image").setAttribute("src", str);
+            document.getElementById("upload").removeAttribute("disabled");
+            let strFileInfo = "<p style='font-size: 16px; color: yellow;'>File Infomation:</p>File: " + currFile.name;
+            strFileInfo += "<br>File Size: " + size;        
+            //document.getElementById("fileInfo").innerHTML=strFileInfo;
+            startUploading();
+        } else{
+            alert("Image file need to be less than 2 MB!");
         }
-        else {  
-            size = (Math.round(currFile.size * 100 / 1024) / 100).toString() + 'KB';   
-        }
-
-        let str = getObjectURL(currFile);
-        document.getElementById("dosaic_image").setAttribute("src", str);
-        document.getElementById("do_dosaic").removeAttribute("disabled");
-        let strFileInfo = "<p style='font-size: 16px; color: yellow;'>File Infomation:</p>File: " + currFile.name;
-        strFileInfo += "<br>File Size: " + size;        
-        document.getElementById("fileInfo").innerHTML=strFileInfo;
-
-
     } 
-    else{
-        document.getElementById("do_dosaic").removeAttribute("disabled");
-    }
-}
 
+}
 
 
 function startUploading() {
@@ -77,7 +72,7 @@ function uploadFile() {
     xhr.addEventListener("error", onUploadError, false);
     xhr.open("POST", "fileupload");
     xhr.send(fd);
-    document.getElementById("do_dosaic").removeAttribute("disabled");
+
         
 }
 function loadImage(){
@@ -93,23 +88,21 @@ function onUploadComplete(e, error) {
         system.out.print(e.error);
 
     }else{
+        document.getElementById("upload").setAttribute("disabled", false);
+        document.getElementById("go_dosaic").removeAttribute("disabled");
+        document.getElementById("proDiv").style.display="none";
         getExif();
     }
 }
  /* This function will continueously update the progress bar */
  function onUploadProgress(e) {
     if (e.lengthComputable) {
-        var loaded = e.loaded;
-        var percentComplete = parseInt((loaded) * 100 / fileSize);
-
-        if(percentComplete <= 100){
-            document.getElementById("progressor").innerHTML = percentComplete.toString()+"%";
-        }
-        else{
-            document.getElementById("proDiv").style.display="none";
-        }
+        var percentComplete = parseInt((e.loaded) * 100 / fileSize);
+        document.getElementById("progressor").innerHTML = percentComplete.toString()+"%";
     } else {
-        alert('unable to compute, error 0101:');
+        document.getElementById("upload").setAttribute("disabled", false);
+        document.getElementById("go_dosaic").setAttribute("disabled", false);
+        alert('upload failed! error 0101:');
     }
 }
 
@@ -163,7 +156,7 @@ function htmlExif()
     let ind=str.indexOf("uplaod_image.jpg");
 
     if(ind>=0){
-        document.write("<p>No image picked!</p>")
+        //document.write("<p>No image picked!</p>")
     }
     else{
         document.write(strFileInfo);
@@ -193,6 +186,7 @@ function topBar()
 	)
 }
 
-function do_dosaic(){
-    window.open("do_result.html", "xxxx","toolbar=no,location=no,directories=no,menubar=no, scrollbars=no,resizable=yes,status=no,top=0,left=0")
+function go_dosaic(){
+    document.getElementById("go_dosaic").setAttribute("disable", "false");
+    window.open("/go_dosaic"); //, "xxxx","toolbar=no,location=no,directories=no,menubar=no, scrollbars=no,resizable=yes,status=no,top=0,left=0")
 }

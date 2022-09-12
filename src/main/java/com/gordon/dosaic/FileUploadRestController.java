@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
  
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class FileUploadRestController {
  
     private String jpegFile;
@@ -45,7 +45,7 @@ public class FileUploadRestController {
     /*
      * single file upload in a request
      */
-    @RequestMapping("fileupload")
+    @RequestMapping("/fileupload")
     public void uploadFile(@RequestParam("multipartFile") MultipartFile uploadfile) {
  
         if (uploadfile.isEmpty()) {
@@ -108,7 +108,7 @@ public class FileUploadRestController {
     }
 
        
-     @RequestMapping(value = "exif")
+     @RequestMapping(value = "/exif")
 	public void JpegExif(HttpServletRequest request, HttpServletResponse response)throws IOException {
     
   /*

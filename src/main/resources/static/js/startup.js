@@ -34,7 +34,7 @@ function uploadFile() {
     xhr.upload.addEventListener("progress", onUploadProgress, false);
     xhr.addEventListener("load", onUploadComplete, false);
     xhr.addEventListener("error", onUploadError, false);
-    xhr.open("POST", "fileupload");
+    xhr.open("POST", "/fileupload");
     xhr.send(fd);
         
 }

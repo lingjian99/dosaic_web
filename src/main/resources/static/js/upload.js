@@ -27,7 +27,7 @@ function loadPage()
         }
 	}
 
-	xmlhttp.open("POST","exif",true);
+	xmlhttp.open("POST","/exif",true);
 	
     xmlhttp.send();
 
